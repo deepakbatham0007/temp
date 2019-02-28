@@ -53,3 +53,6 @@
 	mySQL : SELECT * FROM EmployeeSalary ORDER BY Salary DESC LIMIT N
 	SQL server  : SELECT TOP N * FROM EmployeeSalary ORDER BY Salary DESC
 	Oracle : SELECT * FROM (SELECT * FROM EmployeeSalary ORDER BY Salary DESC) WHERE ROWNUM <= 3;
+	
+	
+	deepak from 10 server
