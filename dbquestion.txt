@@ -1,0 +1,55 @@
+1.	various relationships of database.
+	One-to-one: Single table having drawn relationship with another table having similar kind of columns.
+	One-to-many: Two tables having primary and foreign key relation.
+	Many-to-many: Junction table having many tables related to many tables.
+
+2.	Normalization and advantages of normalizing database.
+	Organized data void of inconsistent dependency and redundancy within a database is called normalization.
+	No duplicate entries
+	Saves storage space
+	Boasts the query performances.
+	
+3.	cursor.
+	A database object which helps in manipulating data row by row representing a result set is called cursor.
+
+4.	Join 
+	INNER JOINs: Blank rows are left in the middle while more than equal to two tables are joined.
+	OUTER JOINs: Divided into Left Outer Join and Right Outer Join. Blank rows are left at the specified side by joining tables in other side.	
+
+5.	Index
+	Index hunting helps in improving the speed as well as the query performance of database. The followed measures are achieved to do that:
+	The query optimizer is used to coordinate the study of queries with the workload and the best use of queries suggested based on this.
+	Index, query distribution along with their performance is observed to check the effect.
+	Tuning databases to a small collection of problem queries is also recommended.
+	
+	EmployeeDetails
+	EmpId	FullName	ManagerId	DateOfJoining
+	121	John Snow	321	01/31/2014
+	321	Walter White	986	01/30/2015
+	421	Kuldeep Rana	876	27/11/2016
+	
+	Table - EmployeeSalary
+	EmpId	Project	Salary
+	121	P1	8000
+	321	P2	1000
+	421	P1	12000
+
+1.	fetch project-wise count of employees sorted by project's count
+	SELECT Project, count(EmpId) EmpProjectCount FROM EmployeeSalary GROUP BY Project ORDER BY EmpProjectCount DESC;
+
+2.	fetch employee names and salary records
+	SELECT E.FullName, S.Salary  FROM EmployeeDetails E LEFT JOIN EmployeeSalary S ON E.EmpId = S.EmpId;
+
+3.	fetch all employee records from EmployeeDetails table who have a salary record in EmployeeSalary table.
+	SELECT E.FullName, S.Salary  FROM EmployeeDetails E LEFT JOIN EmployeeSalary S ON E.EmpId = S.EmpId;
+
+4.	fetch duplicate records from a table
+	SELECT EmpId, Project, Salary, COUNT(*) FROM EmployeeSalary GROUP BY EmpId, Project, Salary HAVING COUNT(*) > 1;
+
+5.	create an empty table with same structure as some other table.
+	SELECT * INTO newTable FROM EmployeeDetails WHERE 1 = 0;
+
+6.	fetch top n records?
+	mySQL : SELECT * FROM EmployeeSalary ORDER BY Salary DESC LIMIT N
+	SQL server  : SELECT TOP N * FROM EmployeeSalary ORDER BY Salary DESC
+	Oracle : SELECT * FROM (SELECT * FROM EmployeeSalary ORDER BY Salary DESC) WHERE ROWNUM <= 3;
