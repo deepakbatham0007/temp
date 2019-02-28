@@ -55,4 +55,5 @@
 	Oracle : SELECT * FROM (SELECT * FROM EmployeeSalary ORDER BY Salary DESC) WHERE ROWNUM <= 3;
 
 
-deepak 123
+deepak 123--1
+	deepak from 10 server good
